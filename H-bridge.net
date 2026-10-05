@@ -1,0 +1,29 @@
+* C:\Users\jjfee\Desktop\.Notes\Fall 2026\Senior Design\h-bridge-circuit\H-bridge.asc
+M1 N001 Vin1 0 0 SSF2116N
+M2 N001 Vin1 V V SSF2116P
+R9 Vout1 N001 7
+V1 Vin1 0 PULSE(0 5 1.002 1n 1n 100m 200m 5)
+R1 V Vin1 5k
+C1 0 V 0.1µ
+L1 Vout1 Vout2 200m
+M3 V Vin2 N002 N002 SSF2116P
+M4 N002 Vin2 0 0 SSF2116N
+R2 V Vin2 5k
+C2 V 0 0.1µ
+V2 Vin2 0 PULSE(5 0 1.002 1n 1n 100m 200m 5)
+V3 V 0 5
+R3 N002 Vout2 7
+D1 N003 NC_01 D
+D2 NC_02 NC_03 D
+D3 NC_04 NC_05 D
+D4 N004 NC_06 D
+.model D D
+.lib C:\Users\jjfee\AppData\Local\LTspice\lib\cmp\standard.dio
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\jjfee\AppData\Local\LTspice\lib\cmp\standard.mos
+.lib C:\Users\jjfee\OneDrive\Documents\LTspice\user.mos
+.tran 0 2 1
+.include user.mos
+.backanno
+.end
